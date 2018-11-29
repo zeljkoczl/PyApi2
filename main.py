@@ -17,11 +17,9 @@ departments = {
 }
 
 app = flask.Flask(__name__)
-app.config["DEBUG"] = True
 
 @app.route("/employees", methods=['GET', 'POST'])
 def employees_api():
-  print(request.headers['token'])
   if request.headers['token'] == token:
         if request.method == 'GET':
               return jsonify(employees)
@@ -36,7 +34,6 @@ def employees_api():
 
 @app.route("/departments", methods=['GET', 'POST'])
 def departments_api():
-  print(request.headers['token'])
   if request.headers['token'] == token:
         if request.method == 'GET':
               return jsonify(departments)
